@@ -21,9 +21,81 @@
     <script src="./prebid-ads.js"></script>
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    
-    
-    
+    <style>
+     .modal-window {
+        position: fixed;
+        background-color: #2472d3d1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s;
+      }
+      .modal-window:target {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal-window > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2em;
+        background: white;
+      }
+      .modal-window header {
+        font-weight: bold;
+      }
+      .modal-window h1 {
+        font-size: 150%;
+        margin: 0 0 15px;
+      }
+      .modal-close {
+        color: #aaa;
+        line-height: 50px;
+        font-size: 80%;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        width: 70px;
+        text-decoration: none;
+      }
+      .modal-close:hover {
+        color: black;
+      }
+      .modal-window > div {
+        border-radius: 1rem;
+      }
+      .modal-window div:not(:last-of-type) {
+        margin-bottom: 15px;
+      }
+      small {
+        color: lightgray;
+      }
+      .btn {
+        background-color: white;
+        padding: 1em 1.5em;
+        border-radius: 1rem;
+        text-decoration: none;
+      }
+      .btn i {
+        padding-right: 0.3em;
+      }
+      
+
+    </style>
+    <script>
+      if (window.canRunAds === undefined) {
+        // adblocker detected, show fallback
+        window.history.pushState('', '', '#open-modal')
+      }
+    </script>
     
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -35,17 +107,15 @@
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
   </head>
-  <div class="adBlock" id="adBlock">
-    Please disable the adBlocker
-  </div>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-overlap u-overlap-transparent">
-    <script>
-      if (window.canRunAds === undefined) {
-        // adblocker detected, show fallback
-        var ele = document.getElementById('adBlock')
-        ele.style.display = 'flex'
-      }
-    </script>
+    <div id="open-modal" class="modal-window">
+      <div>
+        <a href="#" title="Close" class="modal-close">Close</a>
+        <h3>Please disable the AdBlocker</h3>
+        <h5>Disable the Adblocker and refersh the page</h5>
+        <h5>Sorry for the inconvinice, we are currently looking in the issue</h5>
+      </div>
+    </div>
     <header class="u-clearfix u-header u-header" id="sec-e995"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="5085" data-image-height="4500">
           <img src="images/F-01.png" class="u-logo-image u-logo-image-1">
@@ -210,8 +280,5 @@
     <footer class="u-align-center u-clearfix u-grey-80" id="sec-aeb0"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant">Copyright Adsys</p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      adsysmed@gmail.com
-    </section>
   </body>
 </html>

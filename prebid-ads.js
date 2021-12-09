@@ -1,1 +1,1 @@
-var canRunAds = true;
+window.canRunAds = true;
